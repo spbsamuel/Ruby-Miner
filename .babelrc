@@ -1,16 +1,21 @@
 {
   "presets": [
     [
-      "env"
-    ],
-    "react"
-  ],
-  "plugins": [
-    [
-      "transform-object-rest-spread",
+      "env",
       {
-        "useBuiltIns": true
+        "targets": {
+          "browsers": [
+            "last 2 versions"
+          ],
+          "useBuiltIns": true,
+          "include": [
+            "transform-object-rest-spread"
+          ],
+          "debug": true
+        }
       }
-    ]
+    ],
+    "react",
+    "stage-0"
   ]
 }
