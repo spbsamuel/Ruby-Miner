@@ -1,12 +1,9 @@
-# React Redux Starter
+# Ruby Miner
 
-This starter tries to include as little as possible to make it easier to understand the purpose of each addition. This makes it easier to modify the starter for your own needs.
+A React single page app clone of rubygems.org. Built on top of my personal [React Redux Starter](https://github.com/spbsamuel/react-redux-starter)
 
 ## Features
-* Start coding with React and Redux
-* Transpilation to ES6
-* Simple prod build config
-* HMR and redux dev tools already set up
+// Todo
 
 ## Requirements
 * node
