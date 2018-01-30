@@ -1,7 +1,7 @@
 {
-  "name": "react-redux-starter",
+  "name": "Ruby Miner",
   "version": "1.0.0",
-  "description": "Bare minimum react starter",
+  "description": "A RubyGems.org clone",
   "main": "index.js",
   "author": "samuel",
   "license": "MIT",
