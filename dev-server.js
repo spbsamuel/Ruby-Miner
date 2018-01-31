@@ -7,5 +7,18 @@ const server = new WebpackDevServer(compiler, {
   hot: true,
   filename: config.output.filename,
   publicPath: config.output.publicPath,
+  proxy: {
+    '/api': {
+      target: 'https://rubygems.org',
+      changeOrigin: true,
+      headers: {
+        "Access-Control-Allow-Origin": "http://localhost:8080",
+        "Access-Control-Allow-Credentials": true
+      },
+      pathRewrite: {
+        '^/api': ''
+      }
+    }
+  }
 });
 server.listen(8080, 'localhost', function() {});
