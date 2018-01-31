@@ -1,4 +1,8 @@
+@import "styles/main_variables";
+
 .StandardLayout{
   margin: auto;
   max-width: 1440px;
+  background-color: $gray;
+  height: 100vh;
 }
