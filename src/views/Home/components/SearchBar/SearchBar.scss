@@ -1,0 +1,21 @@
+@import 'styles/_main_variables.scss';
+
+.SearchBar{
+  height: 38px;
+  background-color: $red;
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.SearchInput{
+  border: none;
+  background-color: transparent;
+  border-bottom: 1px solid black;
+  flex: 1 0 auto;
+  outline: none;
+}
+
+
+

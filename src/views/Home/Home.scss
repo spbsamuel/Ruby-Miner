@@ -1,5 +1,3 @@
-@import 'styles/_main_variables.scss';
-
 .Home{
   display: flex;
   justify-content: center;
@@ -15,47 +13,4 @@
   max-width: 600px;
   flex: 3 0 auto;
   margin: 0 10px;
-}
-
-.SearchBar{
-  height: 38px;
-  background-color: $red;
-  margin: 10px 0;
-  display: flex;
-  align-items: center;
-  padding: 10px;
-}
-
-.SearchInput{
-  border: none;
-  background-color: transparent;
-  border-bottom: 1px solid black;
-  flex: 1 0 auto;
-  outline: none;
-}
-
-.SearchResults{
-  background-color: $white;
-  margin: 10px 0;
-  min-height: 300px;
-  height: 800px;
-  max-height: 80vh;
-  overflow: scroll;
-}
-.FavouritesBar{
-  height: 38px;
-  background-color: $orange;
-  margin: 10px 0;
-  display: flex;
-  align-items: center;
-  padding: 10px;
-}
-
-.InfoPanel{
-  margin: 10px 0;
-  background-color: $white;
-  min-height: 300px;
-  height: 800px;
-  max-height: 80vh;
-  overflow: scroll;
 }

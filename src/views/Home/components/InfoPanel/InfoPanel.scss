@@ -1,0 +1,10 @@
+@import 'styles/_main_variables.scss';
+
+.InfoPanel{
+  margin: 10px 0;
+  background-color: $white;
+  min-height: 300px;
+  height: 800px;
+  max-height: 80vh;
+  overflow: scroll;
+}
