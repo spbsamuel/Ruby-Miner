@@ -4,9 +4,9 @@ import cls from './FavouritesBar.scss'
 //import cx from 'classnames'
 import HeartIcon from 'mdi-react/HeartIcon'
 
-function FavouritesBar() {
+function FavouritesBar({viewFavourites}) {
   return (
-    <div className={cls.FavouritesBar}>
+    <div onClick={viewFavourites} className={cls.FavouritesBar}>
       <h3>My Favourites</h3>
       <HeartIcon/>
     </div>

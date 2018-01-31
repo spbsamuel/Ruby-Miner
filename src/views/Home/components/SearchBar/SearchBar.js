@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import cls from './SearchBar.scss'
 //import cx from 'classnames'
 import SearchIcon from 'mdi-react/MagnifyIcon'
+import SaveIcon from 'mdi-react/ContentSaveIcon'
 import debounce from 'lodash/debounce'
 
 class SearchBar extends React.Component {
@@ -24,10 +25,15 @@ class SearchBar extends React.Component {
   };
 
   render() {
+    const isSaved = this.state.searchQuery in this.props.savedQueries;
     return (
       <div className={cls.SearchBar}>
         <SearchIcon/>
         <input onChange={this.searchQueryHandler} className={cls.SearchInput}/>
+        <button onClick={() => this.props.saveOrUnsaveSearchQuery(this.state.searchQuery, !isSaved)}>
+          {isSaved ? 'Un-save' : 'Save'}
+          <SaveIcon/>
+        </button>
       </div>
     )
   }

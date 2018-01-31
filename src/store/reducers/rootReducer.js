@@ -1,8 +1,10 @@
 import {combineReducers} from 'redux';
-import search from './search/reducers'
+import rubygems from './rubygems/reducers'
+import dashboard from './dashboard/reducers'
 
 const rootReducer = combineReducers({
-  search,
+  rubygems,
+  dashboard
 });
 
 export default rootReducer;

@@ -1,3 +1,3 @@
-import InfoPanel from './InfoPanel'
+import InfoPanel from './container'
 
 export default InfoPanel

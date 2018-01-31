@@ -1,16 +1,18 @@
 import {connect} from 'react-redux'
 import SearchBar from './SearchBar'
-import {searchRubyGems} from 'store/reducers/search/actions'
+import {searchRubyGems, saveOrUnsaveSearchQuery} from 'store/reducers/rubygems/actions'
 
 function mapStateToProps(state, props) {
   return ({
-    searchQuery: state.search.searchQuery
+    searchQuery: state.rubygems.searchQuery,
+    savedQueries: state.rubygems.savedQueries
   })
 }
 
 function mapDispatchToProps(dispatch) {
   return ({
-    searchRubyGems: searchQuery => dispatch(searchRubyGems(searchQuery))
+    searchRubyGems: searchQuery => dispatch(searchRubyGems(searchQuery)),
+    saveOrUnsaveSearchQuery: (searchQuery, save) => dispatch(saveOrUnsaveSearchQuery(searchQuery, save))
   })
 }
 

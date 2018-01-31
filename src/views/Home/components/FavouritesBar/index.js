@@ -1,3 +1,3 @@
-import FavouritesBar from './FavouritesBar'
+import FavouritesBar from './container'
 
 export default FavouritesBar
