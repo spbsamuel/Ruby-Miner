@@ -15,9 +15,6 @@ const server = new WebpackDevServer(compiler, {
         "Access-Control-Allow-Origin": "http://localhost:8080",
         "Access-Control-Allow-Credentials": true
       },
-      pathRewrite: {
-        '^/api': ''
-      }
     }
   }
 });

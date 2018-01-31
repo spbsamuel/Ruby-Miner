@@ -19,6 +19,7 @@ const ENV_GLOBALS = {
 module.exports =
   {
     entry: [
+      'whatwg-fetch',
       './src/app.js',
     ],
     output: {
