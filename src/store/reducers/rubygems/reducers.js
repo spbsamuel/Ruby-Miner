@@ -1,4 +1,6 @@
 import update from 'immutability-helper'
+import stateFromStorage from 'store/stateFromStorage'
+import _merge from 'lodash/merge'
 
 import {
   SEARCH_QUERY_REQUEST,
@@ -25,7 +27,7 @@ const ACTION_HANDLERS = {
   [SEARCH_QUERY_FAILURE]: (rubygems, action) => rubygems,
   [GET_RUBYGEM_REQUEST]: (rubygems, action) => rubygems,
   [GET_RUBYGEM_SUCCESS]: (rubygems, action) => update(rubygems, {
-    gems: {$merge: {[action.gemName]:action.response}}
+    gems: {$merge: {[action.gemName]: action.response}}
   }),
   [GET_RUBYGEM_FAILURE]: (rubygems, action) => rubygems,
   [SET_GEM_FAVOURITES]: (rubygems, action) => {
@@ -44,13 +46,13 @@ const ACTION_HANDLERS = {
   },
 };
 
-export const initialState = {
+export const initialState = _merge({
   searchQuery: '',
   results: [],
   gems: {},
   favourites: {},
   savedQueries: {}
-};
+}, stateFromStorage('favourites', 'gems', 'savedQueries'));
 
 function rubygemsReducer(rubygems = initialState, action) {
   const handler = ACTION_HANDLERS[action.type];

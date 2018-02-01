@@ -1,5 +1,6 @@
 import apiEndpoints from './apiEndpoints'
 import _keyBy from 'lodash/keyBy'
+import _pick from 'lodash/pick'
 
 export const SEARCH_QUERY_REQUEST = 'SEARCH_QUERY_REQUEST';
 export const SEARCH_QUERY_SUCCESS = 'SEARCH_QUERY_SUCCESS';
@@ -62,24 +63,67 @@ export function requestRubyGem(gemName) {
   )
 }
 
+export const SAVE_UNSAVE_SEARCHQUERY = 'SAVE_UNSAVE_SEARCHQUERY';
 export const SET_GEM_FAVOURITES = 'SET_GEM_FAVOURITES';
 
+export const LOCAL_STORAGE_SYNCED = 'LOCAL_STORAGE_SYNCED';
+export const LOCAL_STORAGE_SYNCED_FAILURE = 'LOCAL_STORAGE_SYNCED_FAILURE';
+
 export function setGemFavourites(gemName, setAsFavourite = true, time) {
-  return ({
-    type: SET_GEM_FAVOURITES,
-    gemName,
-    setAsFavourite,
-    time
-  })
+  return (
+    (dispatch, getState) => {
+      dispatch({
+        type: SET_GEM_FAVOURITES,
+        gemName,
+        setAsFavourite,
+        time
+      });
+      setTimeout(() => {
+        try {
+          const {rubygems: {favourites, gems}} = getState();
+          const favouritesList = Object.keys(favourites);
+          const favouriteGems = _pick(gems, favouritesList);
+          localStorage.setItem('favourites', JSON.stringify(favourites));
+          localStorage.setItem('gems', JSON.stringify(favouriteGems));
+          dispatch({
+            type: LOCAL_STORAGE_SYNCED
+          })
+        }
+        catch (error) {
+          dispatch
+          ({
+            type: LOCAL_STORAGE_SYNCED_FAILURE,
+          })
+        }
+      }, 0)
+    }
+  )
 }
 
-export const SAVE_UNSAVE_SEARCHQUERY = 'SAVE_UNSAVE_SEARCHQUERY';
-
 export function saveOrUnsaveSearchQuery(searchQuery, save = true, time) {
-  return ({
-    type: SAVE_UNSAVE_SEARCHQUERY,
-    searchQuery,
-    save,
-    time
-  })
+  return (
+    (dispatch, getState) => {
+      dispatch({
+        type: SAVE_UNSAVE_SEARCHQUERY,
+        searchQuery,
+        save,
+        time
+      });
+      setTimeout(() => {
+        try {
+          const {rubygems: {savedQueries}} = getState();
+          localStorage.setItem('savedQueries', JSON.stringify(savedQueries));
+          dispatch({
+            type: LOCAL_STORAGE_SYNCED
+          })
+        }
+        catch (error) {
+          dispatch
+          ({
+            type: LOCAL_STORAGE_SYNCED_FAILURE,
+          })
+        }
+      }, 0)
+    }
+  )
 }
