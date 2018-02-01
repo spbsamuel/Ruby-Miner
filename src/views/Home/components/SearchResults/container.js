@@ -11,11 +11,9 @@ function mapStateToProps(state, props) {
   })
 }
 
-function mapDispatchToProps(dispatch) {
-  return ({
-    viewDetailed: gemName => dispatch(viewDetailed(gemName)),
-    setGemFavourites: (gemName, setFavourite, time) => dispatch(setGemFavourites(gemName, setFavourite, time))
-  })
-}
+const mapActionToProps = {
+    viewDetailed,
+    setGemFavourites,
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchResults)
+export default connect(mapStateToProps, mapActionToProps)(SearchResults)

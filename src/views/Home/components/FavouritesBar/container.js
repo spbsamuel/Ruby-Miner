@@ -3,13 +3,16 @@ import FavouritesBar from './FavouritesBar'
 import {viewFavourites} from 'store/reducers/dashboard/actions'
 
 function mapStateToProps(state, props) {
-  return ({})
-}
-
-function mapDispatchToProps(dispatch) {
   return ({
-    viewFavourites: () => dispatch(viewFavourites())
+    favourites: state.rubygems.favourites,
+    savedQueries: state.dashboard.savedQueries
   })
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(FavouritesBar)
+const mapActionsToProps = {
+  viewFavourites
+};
+
+
+
+export default connect(mapStateToProps, mapActionsToProps)(FavouritesBar)

@@ -15,13 +15,11 @@ function mapStateToProps(state, props) {
   })
 }
 
-function mapDispatchToProps(dispatch) {
-  return ({
-    goBack: () => dispatch(goBack()),
-    viewNestedDetailed: gemName => dispatch(viewNestedDetailed(gemName)),
-    requestRubyGem: gemName => dispatch(requestRubyGem(gemName)),
-    searchRubyGems: searchQuery => dispatch(searchRubyGems(searchQuery))
-  })
-}
+const mapActionToProps = {
+  goBack,
+  viewNestedDetailed,
+  requestRubyGem,
+  searchRubyGems,
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(InfoPanel)
+export default connect(mapStateToProps, mapActionToProps)(InfoPanel)

@@ -9,11 +9,9 @@ function mapStateToProps(state, props) {
   })
 }
 
-function mapDispatchToProps(dispatch) {
-  return ({
-    searchRubyGems: searchQuery => dispatch(searchRubyGems(searchQuery)),
-    saveOrUnsaveSearchQuery: (searchQuery, save, time) => dispatch(saveOrUnsaveSearchQuery(searchQuery, save, time))
-  })
-}
+const mapActionToProps = {
+    searchRubyGems,
+    saveOrUnsaveSearchQuery,
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchBar)
+export default connect(mapStateToProps, mapActionToProps)(SearchBar)
