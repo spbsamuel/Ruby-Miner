@@ -4,7 +4,8 @@ import {
   VIEW_DETAILED,
   VIEW_FAVOURITES,
   VIEW_NESTED_DETAILED,
-  POP_NESTED_VIEW
+  POP_NESTED_VIEW,
+  CLEAR_VIEW
 } from './actions'
 
 const ACTION_HANDLERS = {
@@ -12,6 +13,7 @@ const ACTION_HANDLERS = {
   [VIEW_FAVOURITES]: (dashboard, action) => update(dashboard, {inforPanelStack: {$set: [null]}}),
   [VIEW_NESTED_DETAILED]: (dashboard, action) => update(dashboard, {inforPanelStack: {$push: [action.gemName]}}),
   [POP_NESTED_VIEW]: (dashboard, action) => update(dashboard, {inforPanelStack: {$splice: [[dashboard.inforPanelStack.length-1, 1]]}}),
+  [CLEAR_VIEW]: (dashboard, action) => update(dashboard, {inforPanelStack: {$set: []}})
 };
 
 export const initialState = {

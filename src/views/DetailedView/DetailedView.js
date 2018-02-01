@@ -22,7 +22,7 @@ function DetailedView(props) {
         <NavLink className={cls.SearchLink} to='/'>
           <SearchIcon/>
           <h3>
-            Search Ruby Gems
+            Search Gems
           </h3>
         </NavLink>
         <FavouritesBar/>

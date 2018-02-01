@@ -14,3 +14,24 @@
   flex: 3 0 auto;
   margin: 0 10px;
 }
+
+.ModalWrapper{
+  width: 90VW;
+  max-width: 600px;
+}
+
+.ModalWrapper > div{
+  box-shadow: none;
+}
+
+@media (max-width: 859px) {
+  .InfoPanelWrapper {
+    display: none !important;
+  }
+}
+
+@media (min-width: 860px) {
+  .Modal {
+    display: none !important;
+  }
+}

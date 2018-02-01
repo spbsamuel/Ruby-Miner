@@ -28,7 +28,7 @@ function FavouritesPanel({favourites, savedQueries, viewNestedDetailed, searchRu
         {Object.keys(savedQueries).map(searchQuery =>
           <NavLink
             key={searchQuery}
-            to={`?query=${searchQuery}`}
+            to={`/?query=${searchQuery}`}
             className={cls.Links}
             onClick={() => searchRubyGems(searchQuery)}
           >

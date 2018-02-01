@@ -33,3 +33,11 @@ export function goBack() {
     type: POP_NESTED_VIEW,
   })
 }
+
+export const CLEAR_VIEW = 'CLEAR_VIEW';
+
+export function clearView() {
+  return ({
+    type: CLEAR_VIEW,
+  })
+}
