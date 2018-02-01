@@ -14,11 +14,15 @@ import {
 } from './actions'
 
 const ACTION_HANDLERS = {
-  [SEARCH_QUERY_REQUEST]: (rubygems, action) => update(rubygems, {searchQuery: {$set: action.searchQuery}}),
+  [SEARCH_QUERY_REQUEST]: (rubygems, action) => update(rubygems, {
+    searchQuery: {$set: action.searchQuery},
+    searchPending: {$set: true}
+  }),
   [SEARCH_QUERY_SUCCESS]: (rubygems, action) => {
     if (rubygems.searchQuery === action.searchQuery)
       return update(rubygems, {
         results: {$set: action.results},
+        searchPending: {$set: false},
         gems: {$merge: action.gems}
       });
     else
@@ -27,7 +31,7 @@ const ACTION_HANDLERS = {
   [SEARCH_QUERY_FAILURE]: (rubygems, action) => rubygems,
   [GET_RUBYGEM_REQUEST]: (rubygems, action) => rubygems,
   [GET_RUBYGEM_SUCCESS]: (rubygems, action) => update(rubygems, {
-    gems: {$merge: {[action.gemName]: action.response}}
+    gems: {$merge: {[action.gemName]: action.response}},
   }),
   [GET_RUBYGEM_FAILURE]: (rubygems, action) => rubygems,
   [SET_GEM_FAVOURITES]: (rubygems, action) => {
@@ -47,6 +51,7 @@ const ACTION_HANDLERS = {
 };
 
 export const initialState = _merge({
+  searchPending: false,
   searchQuery: '',
   results: [],
   gems: {},

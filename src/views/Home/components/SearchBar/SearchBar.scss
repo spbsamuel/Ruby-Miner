@@ -46,6 +46,12 @@
   background-color: $gray;
 }
 
+.SaveButton:disabled{
+  opacity: 0.4;
+  fill: lightgrey;
+  color: lightgrey;
+}
+
 
 
 

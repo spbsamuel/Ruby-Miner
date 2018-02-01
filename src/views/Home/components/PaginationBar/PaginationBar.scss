@@ -1,0 +1,21 @@
+@import "styles/helper/css_resets";
+@import "styles/main_variables";
+
+.PaginationBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.PaginationBtn {
+  composes: ResetButton;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.PaginationBtn:disabled{
+  cursor: default;
+  opacity: 0.1;
+}

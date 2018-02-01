@@ -4,6 +4,25 @@ import cls from './RubyGemPanel.scss'
 import _get from 'lodash/get'
 import LeftArrow from 'mdi-react/ChevronLeftIcon'
 import _isEmpty from 'lodash/isEmpty'
+import ContentLoader from "react-content-loader"
+
+const Loader = () => (
+  <ContentLoader
+    height={200}
+    width={300}
+    speed={2}
+    primaryColor={"#f3f3f3"}
+    secondaryColor={"#ecebeb"}
+  >
+    <rect x="3" y="1" rx="3" ry="3" width="70" height="10"/>
+    <rect x="2" y="20" rx="3" ry="3" width="300" height="10"/>
+    <rect x="15" y="40" rx="3" ry="3" width="260" height="10"/>
+    <rect x="15" y="60" rx="3" ry="3" width="200" height="10"/>
+    <rect x="2" y="80" rx="3" ry="3" width="300" height="10"/>
+    <rect x="15" y="100" rx="3" ry="3" width="260" height="10"/>
+    <rect x="15" y="120" rx="3" ry="3" width="200" height="10"/>
+  </ContentLoader>
+);
 
 class RubyGemPanel extends React.Component {
   componentDidMount() {
@@ -36,6 +55,7 @@ class RubyGemPanel extends React.Component {
           </button>}
         </div>
         <h1>{currentGem}</h1>
+        {_isEmpty(gem) && <Loader/>}
         {_isEmpty(gem) ||
         <div>
           <p>Version: {version}</p>
@@ -43,6 +63,7 @@ class RubyGemPanel extends React.Component {
           <p>Authors: {authors}</p>
           <p>Downloads: {downloads.toLocaleString()}</p>
           <h3>Runtime Dependencies</h3>
+          {runtime.length === 0 && 'none... :D'}
           <div className={cls.LinkList}>
             {runtime.map(({name, requirements}) =>
               <a

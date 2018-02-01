@@ -1,6 +1,6 @@
 import React from 'react'
 import cls from './Home.scss'
-import {SearchBar, SearchResults} from './components'
+import {SearchBar, SearchResults, PaginationBar} from './components'
 import InfoPanel from 'connected_components/InfoPanel'
 import FavouritesBar from 'connected_components/FavouritesBar'
 import Modal from 'react-responsive-modal'
@@ -11,6 +11,7 @@ function Home({openDetailed, clearView}) {
       <div className={cls.SearchGroup}>
         <FavouritesBar/>
         <SearchBar/>
+        <PaginationBar/>
         <SearchResults/>
       </div>
       <div className={cls.InfoPanelWrapper}>

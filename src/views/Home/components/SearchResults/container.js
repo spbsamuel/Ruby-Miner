@@ -6,6 +6,7 @@ import {setGemFavourites} from 'store/reducers/rubygems/actions'
 function mapStateToProps(state, props) {
   return ({
     results: state.rubygems.results,
+    searchPending: state.rubygems.searchPending,
     gems: state.rubygems.gems,
     favourites: state.rubygems.favourites
   })

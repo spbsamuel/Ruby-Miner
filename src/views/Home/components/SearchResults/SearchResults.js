@@ -3,13 +3,13 @@ import PropTypes from 'prop-types'
 import cls from './SearchResults.scss'
 import NotFollowingIcon from 'mdi-react/HeartOutlineIcon'
 import FollowingIcon from 'mdi-react/HeartIcon'
+import { List } from 'react-content-loader'
 
-//import cx from 'classnames'
-
-function SearchResults({results, gems, favourites, viewDetailed, setGemFavourites}) {
+function SearchResults({results, searchPending, gems, favourites, viewDetailed, setGemFavourites}) {
   return (
     <div className={cls.SearchResults}>
-      {results.map(name =>
+      {searchPending && <List width={250}/>}
+      {!searchPending && results.map(name =>
         <SearchItem
           key={name}
           {...gems[name]}
