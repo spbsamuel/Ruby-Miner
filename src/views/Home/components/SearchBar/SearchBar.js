@@ -26,11 +26,12 @@ class SearchBar extends React.Component {
 
   render() {
     const isSaved = this.state.searchQuery in this.props.savedQueries;
+    const {searchQuery} = this.state;
     return (
       <div className={cls.SearchBar}>
         <SearchIcon/>
-        <input onChange={this.searchQueryHandler} className={cls.SearchInput}/>
-        <button onClick={() => this.props.saveOrUnsaveSearchQuery(this.state.searchQuery, !isSaved)}>
+        <input value={searchQuery} onChange={this.searchQueryHandler} className={cls.SearchInput}/>
+        <button onClick={() => this.props.saveOrUnsaveSearchQuery(this.state.searchQuery, !isSaved, new Date())}>
           {isSaved ? 'Un-save' : 'Save'}
           <SaveIcon/>
         </button>

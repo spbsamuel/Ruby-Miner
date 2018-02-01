@@ -12,7 +12,7 @@ function mapStateToProps(state, props) {
 function mapDispatchToProps(dispatch) {
   return ({
     searchRubyGems: searchQuery => dispatch(searchRubyGems(searchQuery)),
-    saveOrUnsaveSearchQuery: (searchQuery, save) => dispatch(saveOrUnsaveSearchQuery(searchQuery, save))
+    saveOrUnsaveSearchQuery: (searchQuery, save, time) => dispatch(saveOrUnsaveSearchQuery(searchQuery, save, time))
   })
 }
 

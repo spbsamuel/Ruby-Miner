@@ -13,7 +13,7 @@ export function searchRubyGems(searchQuery) {
         searchQuery
       });
 
-      if (searchQuery.length > 0){
+      if (searchQuery.length > 0) {
         apiEndpoints.search(searchQuery)
           .then(response => {
             const results = response.map(({name}) => name);
@@ -26,7 +26,7 @@ export function searchRubyGems(searchQuery) {
             })
           });
       }
-      else{
+      else {
         dispatch({
           type: SEARCH_QUERY_SUCCESS,
           searchQuery,
@@ -54,7 +54,8 @@ export function requestRubyGem(gemName) {
         .then(response => {
           dispatch({
             type: GET_RUBYGEM_SUCCESS,
-
+            gemName,
+            response
           })
         });
     }
@@ -63,20 +64,22 @@ export function requestRubyGem(gemName) {
 
 export const SET_GEM_FAVOURITES = 'SET_GEM_FAVOURITES';
 
-export function setGemFavourites(gemName, setAsFavourite=true) {
+export function setGemFavourites(gemName, setAsFavourite = true, time) {
   return ({
     type: SET_GEM_FAVOURITES,
     gemName,
-    setAsFavourite
+    setAsFavourite,
+    time
   })
 }
 
 export const SAVE_UNSAVE_SEARCHQUERY = 'SAVE_UNSAVE_SEARCHQUERY';
 
-export function saveOrUnsaveSearchQuery(searchQuery, save=true) {
+export function saveOrUnsaveSearchQuery(searchQuery, save = true, time) {
   return ({
     type: SAVE_UNSAVE_SEARCHQUERY,
     searchQuery,
-    save
+    save,
+    time
   })
 }

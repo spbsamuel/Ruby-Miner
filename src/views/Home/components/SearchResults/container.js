@@ -14,7 +14,7 @@ function mapStateToProps(state, props) {
 function mapDispatchToProps(dispatch) {
   return ({
     viewDetailed: gemName => dispatch(viewDetailed(gemName)),
-    setGemFavourites: (gemName, setFavourite) => dispatch(setGemFavourites(gemName, setFavourite))
+    setGemFavourites: (gemName, setFavourite, time) => dispatch(setGemFavourites(gemName, setFavourite, time))
   })
 }
 

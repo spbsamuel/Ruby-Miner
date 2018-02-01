@@ -24,18 +24,20 @@ const ACTION_HANDLERS = {
   },
   [SEARCH_QUERY_FAILURE]: (rubygems, action) => rubygems,
   [GET_RUBYGEM_REQUEST]: (rubygems, action) => rubygems,
-  [GET_RUBYGEM_SUCCESS]: (rubygems, action) => rubygems,
+  [GET_RUBYGEM_SUCCESS]: (rubygems, action) => update(rubygems, {
+    gems: {$merge: {[action.gemName]:action.response}}
+  }),
   [GET_RUBYGEM_FAILURE]: (rubygems, action) => rubygems,
   [SET_GEM_FAVOURITES]: (rubygems, action) => {
     if (action.setAsFavourite) {
-      return update(rubygems, {favourites: {$merge: {[action.gemName]: true}}})
+      return update(rubygems, {favourites: {$merge: {[action.gemName]: action.time}}})
     } else {
       return update(rubygems, {favourites: {$unset: [action.gemName]}})
     }
   },
   [SAVE_UNSAVE_SEARCHQUERY]: (rubygems, action) => {
     if (action.save) {
-      return update(rubygems, {savedQueries: {$merge: {[action.searchQuery]: true}}})
+      return update(rubygems, {savedQueries: {$merge: {[action.searchQuery]: action.time}}})
     } else {
       return update(rubygems, {savedQueries: {$unset: [action.searchQuery]}})
     }

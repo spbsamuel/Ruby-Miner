@@ -34,7 +34,7 @@ function SearchItem({
   const handleClick = () => viewDetailed(name);
   const handleFavourite = (e) => {
     e.stopPropagation();
-    toggleFavourite(name, !isFavourite)
+    toggleFavourite(name, !isFavourite, new Date())
   };
   return (
     <div onClick={handleClick} className={cls.SearchItem}>
