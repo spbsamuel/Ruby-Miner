@@ -1,7 +1,8 @@
 import React from 'react'
 import cls from './Home.scss'
-import {FavouritesBar, SearchBar, SearchResults} from './components'
+import {SearchBar, SearchResults} from './components'
 import InfoPanel from 'connected_components/InfoPanel'
+import FavouritesBar from 'connected_components/FavouritesBar'
 
 function Home(props) {
   return (

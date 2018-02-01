@@ -1,0 +1,30 @@
+@import "styles/helper/css_resets";
+.Header{
+  height: 30px;
+
+}
+
+.BackButton{
+  composes: ResetButton;
+  display: flex;
+  align-items: center;
+}
+
+.RubyGemPanel{
+  h1{
+    margin-top: 0;
+  }
+}
+
+.Links {
+  composes: raised from global;
+  display: block;
+  width: calc(50% - 10px);
+  padding: 10px;
+  margin: 5px;
+}
+
+.LinkList {
+  display: flex;
+  flex-wrap: wrap;
+}

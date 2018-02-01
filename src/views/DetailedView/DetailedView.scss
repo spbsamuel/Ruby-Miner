@@ -1,5 +1,34 @@
+@import "styles/main_variables";
+
 .InfoPanelWrapper{
   max-width: 600px;
   margin: auto;
   padding: 10px;
+}
+
+.Header{
+  display: flex;
+  align-items: center;
+  a:first-child{
+    margin-right: 5px;
+  }
+  a:last-child{
+    margin-left: 5px;
+  }
+}
+
+.Header > a{
+  flex: 1 0 auto;
+}
+
+.SearchLink{
+  composes: raised from global;
+  display: flex;
+  align-items: center;
+  height: 38px;
+  background-color: $white;
+  padding: 10px;
+  h3{
+    margin: auto;
+  }
 }

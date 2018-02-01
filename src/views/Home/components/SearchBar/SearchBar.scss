@@ -1,12 +1,21 @@
 @import 'styles/_main_variables.scss';
+@import "styles/helper/css_resets";
+
+
+.SearchBarContainer{
+  display: flex;
+  align-items: center;
+}
 
 .SearchBar{
-  height: 38px;
-  background-color: $red;
+  composes: raised from global;
+  height: 42px;
+  background-color: $white;
   margin: 10px 0;
   display: flex;
   align-items: center;
   padding: 10px;
+  flex: 1 0 auto;
 }
 
 .SearchInput{
@@ -16,6 +25,27 @@
   flex: 1 0 auto;
   outline: none;
 }
+
+.SaveButton{
+  composes: ResetButton;
+  composes: raised from global;
+  background-color: $white;
+  margin-left:  10px ;
+  height: 42px;
+  padding: 10px;
+  width: 120px;
+  display: flex;
+  align-items: center;
+  span{
+    display: block;
+    margin: auto;
+  }
+}
+
+.SaveButton.Hide{
+  background-color: $gray;
+}
+
 
 
 

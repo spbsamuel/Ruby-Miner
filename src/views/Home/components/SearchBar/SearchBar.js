@@ -1,9 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import cls from './SearchBar.scss'
-//import cx from 'classnames'
+import cx from 'classnames'
 import SearchIcon from 'mdi-react/MagnifyIcon'
 import SaveIcon from 'mdi-react/ContentSaveIcon'
+import SaveOutlineIcon from 'mdi-react/ContentSaveOutlineIcon'
 import debounce from 'lodash/debounce'
 
 class SearchBar extends React.Component {
@@ -12,13 +13,15 @@ class SearchBar extends React.Component {
     page: 0,
     savedQueries: {}
   };
+
   constructor(props) {
     super(props);
     const {searchQuery, searchRubyGems} = props;
     this.state = {searchQuery: searchQuery || ''};
     this.reduxSearchQuery = debounce(query => searchRubyGems(query), 300)
   }
-  componentDidMount(){
+
+  componentDidMount() {
     const {searchQuery, page, searchRubyGems} = this.props;
     searchRubyGems(searchQuery, page)
   }
@@ -37,12 +40,14 @@ class SearchBar extends React.Component {
     const isSaved = this.state.searchQuery in this.props.savedQueries;
     const {searchQuery} = this.state;
     return (
-      <div className={cls.SearchBar}>
-        <SearchIcon/>
-        <input value={searchQuery} onChange={this.searchQueryHandler} className={cls.SearchInput}/>
-        <button onClick={() => this.props.saveOrUnsaveSearchQuery(this.state.searchQuery, !isSaved, new Date())}>
-          {isSaved ? 'Un-save' : 'Save'}
-          <SaveIcon/>
+      <div className={cls.SearchBarContainer}>
+        <div className={cls.SearchBar}>
+          <SearchIcon/>
+          <input value={searchQuery} onChange={this.searchQueryHandler} className={cls.SearchInput}/>
+        </div>
+        <button className={cx(cls.SaveButton, {[cls.Hide]: isSaved})} onClick={() => this.props.saveOrUnsaveSearchQuery(this.state.searchQuery, !isSaved, new Date())}>
+          {isSaved ? <SaveIcon/> : <SaveOutlineIcon/>}
+          <span>{isSaved ? 'Un-save' : 'Save'}</span>
         </button>
       </div>
     )

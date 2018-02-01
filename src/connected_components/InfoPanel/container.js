@@ -5,8 +5,8 @@ import {requestRubyGem, searchRubyGems} from 'store/reducers/rubygems/actions'
 
 function mapStateToProps(state, props) {
   const {currentRoute} = props;
-  const stack = state.dashboard.inforPanelStack.slice();
-  if (currentRoute !== undefined) stack[0] = currentRoute;
+  let stack = state.dashboard.inforPanelStack.slice();
+  if (currentRoute !== undefined) stack = [currentRoute].concat(stack);
   const currentGemIndex = stack.length - 1;
   const currentGem = stack[currentGemIndex];
   return ({

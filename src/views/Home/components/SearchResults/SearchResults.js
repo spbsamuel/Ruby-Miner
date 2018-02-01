@@ -30,7 +30,7 @@ function SearchItem({
   isFavourite,
   viewDetailed,
   toggleFavourite
-}) {
+                    }) {
   const handleClick = (e) => {
     if (e.ctrlKey || e.metaKey) return;
     e.preventDefault();
@@ -38,21 +38,28 @@ function SearchItem({
   };
   const handleFavourite = (e) => {
     e.stopPropagation();
+    e.preventDefault();
     toggleFavourite(name, !isFavourite, new Date())
   };
   return (
     <a onClick={handleClick} href={`/gem/${name}`}>
       <div className={cls.SearchItem}>
-        <div>
-          <p><strong>{name}</strong>{version}</p>
-          <p>{info.slice(0,80)}</p>
+        <div className={cls.Description}>
+          <p><strong>{name}</strong> {version}</p>
+          <p>{info.slice(0, 80) + '...'}</p>
         </div>
-        <div>
-          <p><strong>{downloads}</strong></p>
+        <div className={cls.Stats}>
+          <p><strong>{downloads.toLocaleString()}</strong></p>
           <p>Downloads</p>
         </div>
-        <div onClick={handleFavourite}>
-          {isFavourite ? <FollowingIcon/>: <NotFollowingIcon/>}
+        <div className={cls.FollowBtn}>
+          {isFavourite ?
+            <FollowingIcon
+              onClick={handleFavourite}
+            />
+            : <NotFollowingIcon
+              onClick={handleFavourite}
+            />}
         </div>
       </div>
     </a>

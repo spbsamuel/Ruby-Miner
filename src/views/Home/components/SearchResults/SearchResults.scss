@@ -1,14 +1,30 @@
 @import 'styles/_main_variables.scss';
 
 .SearchResults{
+  composes: raised from global;
   background-color: $white;
   margin: 10px 0;
   min-height: 300px;
   height: 800px;
   max-height: 80vh;
   overflow: scroll;
+  padding: 10px;
 }
 
 .SearchItem{
+  width: 100%;
   display: flex;
+  border-bottom: 1px solid $gray;
+  margin: 10px 0 ;
+}
+
+.Description{
+  width: 70%;
+  padding-right: 10px;
+  word-wrap: break-word;
+}
+.Stats{
+}
+.FollowBtn{
+
 }

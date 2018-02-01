@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import cls from './FavouritesBar.scss'
-//import cx from 'classnames'
 import HeartIcon from 'mdi-react/HeartIcon'
+import SaveIcon from 'mdi-react/ContentSaveIcon'
 
-function FavouritesBar({viewFavourites}) {
+function FavouritesBar({viewFavourites, favourites, savedQueries}) {
   const handleClick = (e) => {
     if (e.ctrlKey || e.metaKey) return;
     e.preventDefault();
@@ -14,7 +14,16 @@ function FavouritesBar({viewFavourites}) {
     <a onClick={handleClick} href="/favourites">
       <div className={cls.FavouritesBar}>
         <h3>My Favourites</h3>
-        <HeartIcon/>
+        <div>
+          <span>
+            {Object.keys(savedQueries).length}
+          </span>
+          <SaveIcon/>
+          <span>
+            {Object.keys(favourites).length}
+          </span>
+          <HeartIcon/>
+        </div>
       </div>
     </a>
   )
