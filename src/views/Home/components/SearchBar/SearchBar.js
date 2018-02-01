@@ -7,11 +7,20 @@ import SaveIcon from 'mdi-react/ContentSaveIcon'
 import debounce from 'lodash/debounce'
 
 class SearchBar extends React.Component {
+  static defaultProps = {
+    searchQuery: '',
+    page: 0,
+    savedQueries: {}
+  };
   constructor(props) {
     super(props);
     const {searchQuery, searchRubyGems} = props;
     this.state = {searchQuery: searchQuery || ''};
     this.reduxSearchQuery = debounce(query => searchRubyGems(query), 300)
+  }
+  componentDidMount(){
+    const {searchQuery, page, searchRubyGems} = this.props;
+    searchRubyGems(searchQuery, page)
   }
 
   componentWillReceiveProps(props) {

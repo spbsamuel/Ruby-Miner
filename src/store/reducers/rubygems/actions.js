@@ -1,21 +1,35 @@
 import apiEndpoints from './apiEndpoints'
 import _keyBy from 'lodash/keyBy'
 import _pick from 'lodash/pick'
+import {replace} from 'react-router-redux'
 
 export const SEARCH_QUERY_REQUEST = 'SEARCH_QUERY_REQUEST';
 export const SEARCH_QUERY_SUCCESS = 'SEARCH_QUERY_SUCCESS';
 export const SEARCH_QUERY_FAILURE = 'SEARCH_QUERY_FAILURE';
 
-export function searchRubyGems(searchQuery) {
+function createQueryStr(searchQuery='', page=0) {
+  if (searchQuery === '' || typeof searchQuery !== 'string') return '';
+
+  const queryStr = `?query=${searchQuery}`;
+  if (page > 1 && !isNaN(page)) return queryStr + `&page=${parseInt(page)}`;
+  return queryStr
+}
+
+export function searchRubyGems(searchQuery, page=0) {
   return (
     dispatch => {
       dispatch({
         type: SEARCH_QUERY_REQUEST,
-        searchQuery
+        searchQuery,
+        page
       });
 
+      const queryStr = createQueryStr(searchQuery, page);
+
+      dispatch(replace(queryStr));
+
       if (searchQuery.length > 0) {
-        apiEndpoints.search(searchQuery)
+        apiEndpoints.search(queryStr)
           .then(response => {
             const results = response.map(({name}) => name);
             const gems = _keyBy(response, 'name');

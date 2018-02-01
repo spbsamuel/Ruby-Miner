@@ -1,10 +1,15 @@
 import {connect} from 'react-redux'
 import SearchBar from './SearchBar'
 import {searchRubyGems, saveOrUnsaveSearchQuery} from 'store/reducers/rubygems/actions'
+import {getUrlQueryByKey} from './selectors'
+
+const searchSelector = getUrlQueryByKey('query');
+const pageSelector = getUrlQueryByKey('page');
 
 function mapStateToProps(state, props) {
   return ({
-    searchQuery: state.rubygems.searchQuery,
+    searchQuery: searchSelector(state),
+    page: pageSelector(state),
     savedQueries: state.rubygems.savedQueries
   })
 }

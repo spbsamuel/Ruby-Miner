@@ -6,13 +6,12 @@ import createHistory from 'history/createBrowserHistory'
 
 import 'styles/core.scss'
 import storeFactory from './store/storeFactory'
-import stateFromStorage from './store/stateFromStorage'
 
 import Routes from 'routes'
 
 const initialState = {};
 const history = createHistory();
-const store = storeFactory(initialState);
+const store = storeFactory(initialState, history);
 
 function Root({store, history}) {
   return (

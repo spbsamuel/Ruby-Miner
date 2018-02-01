@@ -12,8 +12,8 @@ const headers = {
 };
 
 const apiEndpoints = {
-  search: query =>
-    fetch(`${host}api/v1/search.json?query=${query}`, {
+  search: (query, page) =>
+    fetch(`${host}api/v1/search.json${query}`, {
       method: 'Get',
       headers,
     }).then(parseJSON),

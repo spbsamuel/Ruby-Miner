@@ -20,16 +20,23 @@ function InfoPanel({currentGem, ...props}) {
 }
 
 function FavouritesPanel({favourites, savedQueries, viewNestedDetailed, searchRubyGems}) {
+  const handleClick = gemName => e => {
+    if (e.ctrlKey || e.metaKey) return;
+    e.preventDefault();
+    viewNestedDetailed(gemName);
+  };
   return (
     <div>
       <h1>Favourite Gems</h1>
       {Object.keys(favourites).map(gemName =>
-        <p
-          onClick={() => viewNestedDetailed(gemName)}
+        <a
+          onClick={handleClick(gemName)}
           key={gemName}
+          href={`/gem/${gemName}`}
+          style={{display:'block'}}
         >
           {gemName}
-        </p>)}
+        </a>)}
       <h1>Saved Queries</h1>
       {Object.keys(savedQueries).map(searchQuery =>
         <p
@@ -55,6 +62,12 @@ class RubyGemPanel extends React.Component {
     if (currentGem !== nextGem) requestRubyGem(nextGem)
   }
 
+  handleClick = gemName => e => {
+    if (e.ctrlKey || e.metaKey) return;
+    e.preventDefault();
+    this.props.viewNestedDetailed(gemName);
+  };
+
   render() {
     const {currentGem, gem, canGoBack, viewNestedDetailed, goBack} = this.props;
     const {version, info, authors, downloads} = gem;
@@ -68,7 +81,7 @@ class RubyGemPanel extends React.Component {
         <p>Authors: {authors}</p>
         <p>Downloads: {downloads}</p>
         {runtime.map(({name, requirements}) =>
-          <p onClick={() => viewNestedDetailed(name)} key={name}>{name} {requirements}</p>
+          <a onClick={this.handleClick(name)} key={name} href={`/gem/${name}`} style={{display:'block'}}>{name} {requirements}</a>
         )}
       </div>
     )
