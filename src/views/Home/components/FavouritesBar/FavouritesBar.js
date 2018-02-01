@@ -5,11 +5,18 @@ import cls from './FavouritesBar.scss'
 import HeartIcon from 'mdi-react/HeartIcon'
 
 function FavouritesBar({viewFavourites}) {
+  const handleClick = (e) => {
+    if (e.ctrlKey || e.metaKey) return;
+    e.preventDefault();
+    viewFavourites();
+  };
   return (
-    <div onClick={viewFavourites} className={cls.FavouritesBar}>
-      <h3>My Favourites</h3>
-      <HeartIcon/>
-    </div>
+    <a onClick={handleClick} href="/favourites">
+      <div className={cls.FavouritesBar}>
+        <h3>My Favourites</h3>
+        <HeartIcon/>
+      </div>
+    </a>
   )
 }
 

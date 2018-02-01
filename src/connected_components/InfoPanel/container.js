@@ -4,11 +4,14 @@ import {viewNestedDetailed, goBack} from 'store/reducers/dashboard/actions'
 import {requestRubyGem, searchRubyGems} from 'store/reducers/rubygems/actions'
 
 function mapStateToProps(state, props) {
-  const currentGemIndex = state.dashboard.inforPanelStack.length - 1;
-  const currentGem = state.dashboard.inforPanelStack[currentGemIndex];
+  const {currentRoute} = props;
+  const stack = state.dashboard.inforPanelStack.slice();
+  if (currentRoute !== undefined) stack[0] = currentRoute;
+  const currentGemIndex = stack.length - 1;
+  const currentGem = stack[currentGemIndex];
   return ({
     currentGem,
-    canGoBack: state.dashboard.inforPanelStack.length > 1,
+    canGoBack: stack.length > 1,
     favourites: state.rubygems.favourites,
     savedQueries: state.rubygems.savedQueries,
     gem: state.rubygems.gems[currentGem] || {}

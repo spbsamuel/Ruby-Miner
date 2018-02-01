@@ -31,25 +31,31 @@ function SearchItem({
   viewDetailed,
   toggleFavourite
 }) {
-  const handleClick = () => viewDetailed(name);
+  const handleClick = (e) => {
+    if (e.ctrlKey || e.metaKey) return;
+    e.preventDefault();
+    viewDetailed(name);
+  };
   const handleFavourite = (e) => {
     e.stopPropagation();
     toggleFavourite(name, !isFavourite, new Date())
   };
   return (
-    <div onClick={handleClick} className={cls.SearchItem}>
-      <div>
-        <p><strong>{name}</strong>{version}</p>
-        <p>{info.slice(0,80)}</p>
+    <a onClick={handleClick} href={`/gem/${name}`}>
+      <div className={cls.SearchItem}>
+        <div>
+          <p><strong>{name}</strong>{version}</p>
+          <p>{info.slice(0,80)}</p>
+        </div>
+        <div>
+          <p><strong>{downloads}</strong></p>
+          <p>Downloads</p>
+        </div>
+        <div onClick={handleFavourite}>
+          {isFavourite ? <FollowingIcon/>: <NotFollowingIcon/>}
+        </div>
       </div>
-      <div>
-        <p><strong>{downloads}</strong></p>
-        <p>Downloads</p>
-      </div>
-      <div onClick={handleFavourite}>
-        {isFavourite ? <FollowingIcon/>: <NotFollowingIcon/>}
-      </div>
-    </div>
+    </a>
   )
 }
 
