@@ -3,25 +3,8 @@ import cls from './RubyGemPanel.scss'
 import _get from 'lodash/get'
 import LeftArrow from 'mdi-react/ChevronLeftIcon'
 import _isEmpty from 'lodash/isEmpty'
-import ContentLoader from "react-content-loader"
-
-const Loader = () => (
-  <ContentLoader
-    height={200}
-    width={300}
-    speed={2}
-    primaryColor={"#f3f3f3"}
-    secondaryColor={"#ecebeb"}
-  >
-    <rect x="3" y="1" rx="3" ry="3" width="70" height="10"/>
-    <rect x="2" y="20" rx="3" ry="3" width="300" height="10"/>
-    <rect x="15" y="40" rx="3" ry="3" width="260" height="10"/>
-    <rect x="15" y="60" rx="3" ry="3" width="200" height="10"/>
-    <rect x="2" y="80" rx="3" ry="3" width="300" height="10"/>
-    <rect x="15" y="100" rx="3" ry="3" width="260" height="10"/>
-    <rect x="15" y="120" rx="3" ry="3" width="200" height="10"/>
-  </ContentLoader>
-);
+import PageLoader from 'components/PageLoader'
+import FavouriteButton from 'components/FavouriteButton'
 
 class RubyGemPanel extends React.Component {
   componentDidMount() {
@@ -41,8 +24,13 @@ class RubyGemPanel extends React.Component {
     e.preventDefault();
   };
 
+  toggleFavourite = () => {
+    const {currentGem,favourites, setGemFavourites} = this.props;
+    setGemFavourites(currentGem, !(currentGem in favourites), new Date());
+  };
+
   render() {
-    const {currentGem, gem, canGoBack, goBack} = this.props;
+    const {currentGem, gem, canGoBack, goBack, favourites} = this.props;
     const {version, info, authors, downloads} = gem;
     const runtime = _get(gem, 'dependencies.runtime', []);
     return (
@@ -53,8 +41,14 @@ class RubyGemPanel extends React.Component {
             <LeftArrow/><span>back</span>
           </button>}
         </div>
-        <h1>{currentGem}</h1>
-        {_isEmpty(gem) && <Loader/>}
+        <h1>
+          {currentGem}
+          <FavouriteButton
+            isFavourite={currentGem in favourites}
+            toggleFavourite={this.toggleFavourite}
+          />
+        </h1>
+        {_isEmpty(gem) && <PageLoader/>}
         {_isEmpty(gem) ||
         <div>
           <p>Version: {version}</p>

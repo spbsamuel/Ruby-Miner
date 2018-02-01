@@ -3,6 +3,7 @@ import cls from './SearchResults.scss'
 import NotFollowingIcon from 'mdi-react/HeartOutlineIcon'
 import FollowingIcon from 'mdi-react/HeartIcon'
 import { List } from 'react-content-loader'
+import FavouriteButton from 'components/FavouriteButton'
 
 function SearchResults({results, searchPending, gems, favourites, viewDetailed, setGemFavourites}) {
   return (
@@ -47,18 +48,15 @@ function SearchItem({
           <p><strong>{name}</strong> {version}</p>
           <p>{info.slice(0, 80) + '...'}</p>
         </div>
-        <div className={cls.Stats}>
+        <div>
           <p><strong>{downloads.toLocaleString()}</strong></p>
           <p>Downloads</p>
         </div>
-        <div className={cls.FollowBtn}>
-          {isFavourite ?
-            <FollowingIcon
-              onClick={handleFavourite}
-            />
-            : <NotFollowingIcon
-              onClick={handleFavourite}
-            />}
+        <div>
+          <FavouriteButton
+            isFavourite={isFavourite}
+            toggleFavourite={handleFavourite}
+          />
         </div>
       </div>
     </a>

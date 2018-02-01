@@ -1,3 +1,3 @@
-import RubyGemPanel from './RubyGemPanel'
+import RubyGemPanel from './container'
 
 export default RubyGemPanel
