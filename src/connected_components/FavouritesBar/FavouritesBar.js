@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import cls from './FavouritesBar.scss'
 import HeartIcon from 'mdi-react/HeartIcon'
 import SaveIcon from 'mdi-react/ContentSaveIcon'
@@ -28,7 +27,5 @@ function FavouritesBar({viewFavourites, favourites, savedQueries}) {
     </a>
   )
 }
-
-FavouritesBar.propTypes = {}
 
 export default FavouritesBar

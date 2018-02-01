@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import cls from './InfoPanel.scss'
 import FavouritesPanel from './FavouritesPanel'
 import RubyGemPanel from './RubyGemPanel'
@@ -37,7 +36,5 @@ function WelcomePanel() {
     </div>
   )
 }
-
-InfoPanel.propTypes = {};
 
 export default InfoPanel

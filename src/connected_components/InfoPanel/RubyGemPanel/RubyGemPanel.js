@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import cls from './RubyGemPanel.scss'
 import _get from 'lodash/get'
 import LeftArrow from 'mdi-react/ChevronLeftIcon'
@@ -82,7 +81,5 @@ class RubyGemPanel extends React.Component {
     )
   }
 }
-
-RubyGemPanel.propTypes = {}
 
 export default RubyGemPanel

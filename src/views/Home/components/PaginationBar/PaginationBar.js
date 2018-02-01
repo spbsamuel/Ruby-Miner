@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import cls from './PaginationBar.scss'
 import LeftIcon from 'mdi-react/ChevronLeftIcon'
 import RightIcon from 'mdi-react/ChevronRightIcon'
@@ -30,7 +29,5 @@ function PaginationBar({page, results, searchQuery, searchRubyGems}) {
     </div>
   )
 }
-
-PaginationBar.propTypes = {};
 
 export default PaginationBar

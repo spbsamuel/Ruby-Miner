@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import cls from './FavouritesPanel.scss'
 import {NavLink} from 'react-router-dom'
 
@@ -39,7 +38,5 @@ function FavouritesPanel({favourites, savedQueries, viewNestedDetailed, searchRu
     </div>
   )
 }
-
-FavouritesPanel.propTypes = {}
 
 export default FavouritesPanel

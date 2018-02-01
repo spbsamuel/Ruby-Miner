@@ -15,7 +15,6 @@ export function viewFavourites() {
   })
 }
 
-
 export const VIEW_NESTED_DETAILED = 'VIEW_NESTED_DETAILED';
 
 export function viewNestedDetailed(gemName) {
@@ -24,7 +23,6 @@ export function viewNestedDetailed(gemName) {
     gemName
   })
 }
-
 
 export const POP_NESTED_VIEW = 'POP_NESTED_VIEW';
 

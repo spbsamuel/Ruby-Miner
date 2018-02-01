@@ -3,7 +3,18 @@
 A React single page app clone of rubygems.org. Built on top of my personal [React Redux Starter](https://github.com/spbsamuel/react-redux-starter)
 
 ## Features
-// Todo
+
+####In page browsing
+Browse gems while viewing search results
+
+####Open multiple tabs
+Gems can be opened with new tab using CMD + Click
+
+####Nested Gem browsing
+When looking through dependencies, a browsing history is kept to go back
+
+####Favourites Stored Locally
+Favorite gems are stored in localstorage along with saved queries
 
 ## Requirements
 * node
@@ -14,6 +25,18 @@ A React single page app clone of rubygems.org. Built on top of my personal [Reac
 
 ```bash
 $ yarn  # Install project dependencies
+```
+
+Add your api key
+
+`/src/secret.template.js` 
+
+```
+export default 'type your secret api key here'
+```
+rename file
+```bash
+$ mv src/secret.template.js src/secret.js
 ```
 
 ## Run application locally

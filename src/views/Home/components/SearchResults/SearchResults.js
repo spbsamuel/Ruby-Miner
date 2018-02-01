@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import cls from './SearchResults.scss'
 import NotFollowingIcon from 'mdi-react/HeartOutlineIcon'
 import FollowingIcon from 'mdi-react/HeartIcon'
@@ -65,7 +64,5 @@ function SearchItem({
     </a>
   )
 }
-
-SearchResults.propTypes = {};
 
 export default SearchResults

@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import cls from './SearchBar.scss'
 import cx from 'classnames'
 import SearchIcon from 'mdi-react/MagnifyIcon'
@@ -53,7 +52,5 @@ class SearchBar extends React.Component {
     )
   }
 }
-
-SearchBar.propTypes = {};
 
 export default SearchBar

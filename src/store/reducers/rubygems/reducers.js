@@ -28,7 +28,7 @@ const ACTION_HANDLERS = {
     else
       return rubygems
   },
-  [SEARCH_QUERY_FAILURE]: (rubygems, action) => rubygems,
+  [SEARCH_QUERY_FAILURE]: (rubygems, action) =>  update(rubygems, {searchPending: {$set: false}}),
   [GET_RUBYGEM_REQUEST]: (rubygems, action) => rubygems,
   [GET_RUBYGEM_SUCCESS]: (rubygems, action) => update(rubygems, {
     gems: {$merge: {[action.gemName]: action.response}},

@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import cls from './DetailedView.scss'
 import InfoPanel from 'connected_components/InfoPanel'
 import _get from 'lodash/get'
@@ -33,7 +32,5 @@ function DetailedView(props) {
     </div>
   )
 }
-
-DetailedView.propTypes = {};
 
 export default DetailedView
