@@ -4,16 +4,16 @@ A React single page app clone of rubygems.org. Built on top of my personal [Reac
 
 ## Features
 
-###In page browsing
+### In page browsing
 Browse gems while viewing search results
 
-###Open multiple tabs
+### Open multiple tabs
 Gems can be opened with new tab using CMD + Click
 
-###Nested Gem browsing
+### Nested Gem browsing
 When looking through dependencies, a browsing history is kept to go back
 
-###Favourites Stored Locally
+### Favourites Stored Locally
 Favorite gems are stored in localstorage along with saved queries
 
 ## Requirements
